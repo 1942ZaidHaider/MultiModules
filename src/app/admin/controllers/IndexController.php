@@ -1,10 +1,21 @@
 <?php
 
+/**
+* NOTE:
+*
+* $this->response->redirect(admin/:controller/:action) is adding a random '/public' to the url, rendering the paths wrong.
+* Same thing is happening with Phalcon tag->linkTo();
+*/
+
 namespace Admin\Controllers;
 
 use Admin\Models\User;
 use Admin\Models\Product;
 
+/**
+ * Index Controller
+ * Product CRUD
+ */
 class IndexController extends ControllerMaster
 {
     public function initialize()
@@ -41,18 +52,18 @@ class IndexController extends ControllerMaster
     }
     public function productsAction()
     {
-        $this->view->update=[];
-        $id=$this->request->getQuery("id");
-        $prod=null;
-        if($id!=""){
-            $prod= new Product();
+        $this->view->update = [];
+        $id = $this->request->getQuery("id");
+        $prod = null;
+        if ($id != "") {
+            $prod = new Product();
             $prod->findByID($id);
-            $this->view->update=$prod->vals;
+            $this->view->update = $prod->vals;
         }
         if ($this->request->isPost()) {
             $post = $this->request->getPost();
             $prod = new Product();
-            if($post['_id']){
+            if ($post['_id']) {
                 $prod->findByID($post['_id']);
             }
             $prod->assign($post, ["name", "price"]);
@@ -62,11 +73,12 @@ class IndexController extends ControllerMaster
     }
     public function deleteAction()
     {
-        $id=$this->request->getQuery("id");
-        $prod=new Product();
+        $id = $this->request->getQuery("id");
+        $prod = new Product();
         $prod->findByID($id);
         print_r($prod->vals);
         $prod->delete();
+
         header("location: /admin/index/products");
     }
 }
