@@ -67,6 +67,10 @@ class Application extends BaseApplication
 
             return $router;
         });
+        // Registering escaper
+        $di->setShared("escaper", function () {
+            return new Phalcon\Escaper();
+        });
 
         $di->setShared(
             "mongo",

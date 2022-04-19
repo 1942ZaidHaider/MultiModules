@@ -78,7 +78,6 @@ class IndexController extends ControllerMaster
         $prod->findByID($id);
         print_r($prod->vals);
         $prod->delete();
-
         header("location: /admin/index/products");
     }
 }

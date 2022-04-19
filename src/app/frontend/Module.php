@@ -22,9 +22,9 @@ class Module implements ModuleDefinitionInterface
 
         $loader->registerNamespaces(
             [
-                'Frontend\Controllers' => FRONT_PATH.'/controllers/',
-                'Frontend\Models'      => FRONT_PATH.'/models/',
-                'Frontend\Plugins'     => FRONT_PATH.'/plugins/',
+                'Frontend\Controllers' => FRONT_PATH . '/controllers/',
+                'Frontend\Models'      => FRONT_PATH . '/models/',
+                'Frontend\Plugins'     => FRONT_PATH . '/plugins/',
             ]
         );
 
@@ -48,7 +48,7 @@ class Module implements ModuleDefinitionInterface
         // Registering the view component
         $di->set('view', function () {
             $view = new View();
-            $view->setViewsDir(FRONT_PATH.'/views/');
+            $view->setViewsDir(FRONT_PATH . '/views/');
             return $view;
         });
 
