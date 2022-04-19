@@ -1,0 +1,37 @@
+<a href='/'>Home</a><br>
+<a href='/admin'>Admin Home</a>
+<div>
+    <p>
+        <?php echo $message ?>
+    </p>
+</div>
+<div>
+    <h2><?php echo $strings['add_product'] ?></h2>
+    <form method="POST" action="/admin/index/products">
+        <input type='text' name='name' value='<?php echo $update["name"] ?? "" ?>' placeholder='Product Name'>
+        <input type='number' name='price' value='<?php echo $update["price"] ?? "" ?>' placeholder='Price'>
+        <?php if ($update && $update["_id"]) { ?>
+            <input type='text' hidden name='_id' value='<?php echo $update["_id"] ?>' placeholder='Product Name'>
+            <input type='submit' value='<?php echo $strings['update'] ?? "" ?>'>
+        <?php } else {?>
+            <input type='submit' value='<?php echo $strings['add_product'] ?? "" ?>'>
+        <?php } ?>
+    </form>
+</div>
+<hr>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <?php foreach ($products as $v) { ?>
+        <tr>
+            <td><?php echo $v['name'] ?></td>
+            <td><?php echo $v['price'] ?></td>
+            <td><a href='/admin/index/delete?id=<?php echo $v["_id"] ?>'>DELETE</a></td>
+            <td><a href='/admin/index/products?id=<?php echo $v["_id"] ?>'>UPDATE</a></td>
+        </tr>
+    <?php } ?>
+</table>

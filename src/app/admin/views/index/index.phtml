@@ -1,0 +1,25 @@
+<a href='/'>Home</a>
+<div>
+    <p>
+        <?php echo $message ?>
+    </p>
+</div>
+<div>
+    <h2><?php echo $strings['login']?></h2>
+    <form method="POST">
+        <input hidden type='text' name='action' value="login">
+        <input type='text' name='username' placeholder='username'>
+        <input type='password' name='password' placeholder='password'>
+        <input type='submit' value='<?php echo $strings['login']?>'>
+    </form>
+</div>
+<hr>
+<div>
+    <h2><?php echo $strings['register']?></h2>
+    <form method="POST">
+        <input hidden type='text' name='action' value="register">
+        <input type='text' name='username' placeholder='username'>
+        <input type='password' name='password' placeholder='password'>
+        <input type='submit' value='<?php echo $strings['register']?>'>
+    </form>
+</div>

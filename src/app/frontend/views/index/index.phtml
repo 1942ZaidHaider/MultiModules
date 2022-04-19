@@ -1,0 +1,16 @@
+<a href='/admin'>Admin</a>
+<hr>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th></th>
+    </tr>
+    <?php foreach ($products as $v) { ?>
+        <tr>
+            <td><?php echo $v['name'] ?></td>
+            <td><?php echo $v['price'] ?></td>
+            <td><a href='/view?id=<?php echo $v["_id"] ?>'>VIEW</a></td>
+        </tr>
+    <?php } ?>
+</table>
